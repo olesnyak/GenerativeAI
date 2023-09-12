@@ -9,7 +9,7 @@ Table of Contents
 
 Introduction
 
-StringValidator is a utility Java class designed to validate strings based on specific criteria. It utilizes a single regular expression to enforce:
+StringUtil is a utility Java class designed to validate strings based on specific criteria. It utilizes a single regular expression to enforce:
 
     Maximum string length (passed as a parameter)
     Presence of at least one uppercase letter, one lowercase letter, one digit, and one special character from a predefined list
@@ -23,15 +23,15 @@ Features
 
 Installation
 
-To use the StringValidator class, copy the source code into your Java project. Make sure you have Java 1.8 or higher installed on your machine.
+To use the StringUtil class, copy the source code into your Java project. Make sure you have Java 1.8 or higher installed on your machine.
 Usage
 Import the Class
 
-Import the StringValidator class into your Java file:
+Import the StringUtil class into your Java file:
 
 java
 
-import path.to.StringValidator;
+import path.to.StringUtil;
 
 Call the validateString Function
 
@@ -39,14 +39,14 @@ Use the validateString function to validate your string.
 
 java
 
-Boolean result = StringValidator.validateString.apply("YourString", maxLength);
+Boolean result = StringUtil.validateString.apply("YourString", maxLength);
 
 Replace "YourString" with the string you wish to validate and maxLength with the maximum allowable length for the string.
 Example:
 
 java
 
-Boolean result = StringValidator.validateString.apply("Abc$1", 10);
+Boolean result = StringUtil.validateString.apply("Abc$1", 10);
 
 This will return true because the string meets all the criteria.
 Contribution Guidelines
