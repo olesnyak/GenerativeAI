@@ -13,9 +13,15 @@ public class StringUtil {
      */
     public static boolean validateString(String str, int maxLength) {
         // Regular expression for validating the string
-        String regex = String.format(
-                "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!\"#$%%&'()*+,-./:;<=>?@[\\]^_`{|}~])" +
-                        "[A-Za-z\\d!\"#$%%&'()*+,-./:;<=>?@[\\]^_`{|}~]{1,%d}$", maxLength);
+        // Create the regex pattern dynamically to avoid escape sequence issues
+        String specialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        String regex = "^" +
+                "(?=.*[A-Z])" + // At least one uppercase letter
+                "(?=.*[a-z])" + // At least one lowercase letter
+                "(?=.*[0-9])" + // At least one digit
+                "(?=.*[" + Pattern.quote(specialCharacters) + "])" + // At least one special character
+                "[^\\s]" + // No whitespace characters
+                "{1," + maxLength + "}$"; // Length constraint
 
         // Compile and use the regular expression
         Pattern pattern = Pattern.compile(regex);
