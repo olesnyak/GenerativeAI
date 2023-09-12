@@ -1,57 +1,67 @@
 Table of Contents
 
     Introduction
-    Features
     Installation
-    Usage
-    Contribution Guidelines
-    License
+    Examples
+    Android Tests
 
 Introduction
 
-StringUtil is a utility Java class designed to validate strings based on specific criteria. It utilizes a single regular expression to enforce:
+StringUtil - String Validation Utility for Android
+Overview
 
-    Maximum string length (passed as a parameter)
-    Presence of at least one uppercase letter, one lowercase letter, one digit, and one special character from a predefined list
-    Absence of any whitespace characters
-
+StringUtil is a utility class that provides advanced string validation functionalities. This includes checking the string against various security requirements and constraints, making it useful for validating passwords, tokens, or any other secure strings.
 Features
 
-    Maximum Length: Validate if a string's length is within the maximum limit.
-    Character Types: Ensure a string contains various types of characters like uppercase, lowercase, digits, and special characters.
-    Whitespace Check: Ensure a string does not contain any whitespace characters.
+    Validates that the string length falls within a given limit.
+    Checks for at least one uppercase letter, one lowercase letter, one digit, and one special character.
+    Verifies that the string doesn't contain any whitespace characters.
 
 Installation
 
-To use the StringUtil class, copy the source code into your Java project. Make sure you have Java 1.8 or higher installed on your machine.
+Simply copy the StringUtil.java file into your Android project's java/com/yourpackage/utils/ directory.
 Usage
-Import the Class
 
-Import the StringUtil class into your Java file:
-
-java
-
-import path.to.StringUtil;
-
-Call the validateString Function
-
-Use the validateString function to validate your string.
+Here's how to use the validateString function in your Android app:
 
 java
 
-Boolean result = StringUtil.validateString.apply("YourString", maxLength);
+boolean isValid = StringUtil.validateString("Valid1#", 20);
 
-Replace "YourString" with the string you wish to validate and maxLength with the maximum allowable length for the string.
-Example:
+if (isValid) {
+    // Proceed with logic
+} else {
+    // Show an error message
+}
+
+Parameters
+
+    str (String): The string to validate.
+    maxLength (int): The maximum allowable length of the string.
+
+Return Value
+
+    Returns true if the string meets all the criteria.
+    Returns false if it fails any of the conditions.
+
+Examples
 
 java
 
-Boolean result = StringUtil.validateString.apply("Abc$1", 10);
+boolean isValid1 = StringUtil.validateString("Valid1#", 20);  // Returns true
+boolean isValid2 = StringUtil.validateString("invalid", 20);  // Returns false
+boolean isValid3 = StringUtil.validateString("TooLongString1#", 10);  // Returns false
+boolean isValid4 = StringUtil.validateString("With Space1#", 20);  // Returns false
 
-This will return true because the string meets all the criteria.
-Contribution Guidelines
+Unit Tests
 
-Feel free to contribute to this project by opening a Pull Request or an Issue. Please follow the coding standards used in the existing source code.
-License
+Unit tests are available in the StringUtilTest.java file. They cover various edge cases and can be run to verify the functionality of StringUtil.
+Running Unit Tests
 
-MIT License. See LICENSE for more details.
+In Android Studio, right-click on the StringUtilTest.java file and choose Run 'StringUtilTest'.
+Android Tests
+
+Android-specific tests can be found in StringUtilAndroidTest.java. These tests include checking for edge cases specific to Android use-cases.
+Running Android Tests
+
+In Android Studio, right-click on the StringUtilAndroidTest.java file and choose Run 'StringUtilAndroidTest'.
